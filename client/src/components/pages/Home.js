@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="page">
       {userData.user ? (
-        <h1>Welcome {userData.user.displayName}</h1>
+        <h1>Welcome {userData.user}</h1>
       ) : (
         <>
           <h2>You are not logged in</h2>

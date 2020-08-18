@@ -8,21 +8,24 @@ export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
+  const[check,setCheck]=useState();
 
   const { setUserData } = useContext(UserContext);
   const history = useHistory();
 
   const submit = async (e) => {
     e.preventDefault();
+   console.log(check);
     try {
-      const loginUser = { email, password };
+      const loginUser = { email, password ,check};
       const loginRes = await axios.post(
         "http://localhost:5000/users/login",
         loginUser
       );
+      console.log(loginRes.data+"client side")
       setUserData({
-        token: loginRes.data.token,
-        user: loginRes.data.user,
+       // token: loginRes.data.token,
+        user: loginRes.data,
       });
       localStorage.setItem("auth-token", loginRes.data.token);
       history.push("/");
@@ -50,6 +53,14 @@ export default function Login() {
           type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
+ 
+ <select 
+ onChange={(e)=>setCheck(e.target.value)}
+ >
+  <option value="true">Teacher</option>
+  <option value="false">Student</option>
+ 
+</select>
 
         <input type="submit" value="Log in" />
       </form>
