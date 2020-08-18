@@ -4,14 +4,14 @@ const jwt = require("jsonwebtoken");
 const auth = require("../middleware/auth");
 const Teacher = require("../models/teacherModel.js");
 const Student = require("../models/studentModel.js");
-
+// const config = require('config');
 router.post("/register", async (req, res) => {
   try {
     let { email, password, passwordCheck, displayName,isTeacher } = req.body;
 
     // validate
 
-    if (!email || !password || !passwordCheck)
+    if (!email || !password || !passwordCheck )
       return res.status(400).json({ msg: "Not all fields have been entered." });
     if (password.length < 5)
       return res
@@ -52,34 +52,62 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const { email, password,isTeacher} = req.body;
+    const { email, password,check} = req.body;
+    console.log(check+"from node")
 
     // validate
     if (!email || !password)
       return res.status(400).json({ msg: "Not all fields have been entered." });
 
       var user;
-      if(isTeacher){
+      if(check=="true"){
+        console.log("inside teacher")
       user = await Teacher.findOne({email: email});
       } else {
+        console.log("inside student")
       user = await Student.findOne({email: email});
       }
+      console.log(user+"user from node")
     if (!user)
       return res
         .status(400)
         .json({ msg: "No account with this email has been registered." });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ msg: "Invalid credentials." });
-
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    res.json({
-      token,
-      user: {
+    if (!isMatch) 
+    {
+    return res.status(400).json({ msg: "Invalid credentials." });
+    }
+    else
+    {
+  console.log("inside else")
+    
+     const payload={ user: {
         id: user._id,
         displayName: user.displayName,
-      },
-    });
+      }};
+      res.send(user.displayName);
+     console.log(payload)
+     //crrate and generate token
+  //   jwt.sign(
+  //     payload,
+  //     config.get('jwtsecret'), {
+  //         expiresIn: 36000
+  //     },
+  //     (err, token) => {
+  //         if (err) 
+  //         return err.message;
+  //         else{
+  //           return token
+  //         res.json({
+  //             token
+  //         });
+  //       }
+  //     }
+     
+  // );
+
+    }
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -87,7 +115,7 @@ router.post("/login", async (req, res) => {
 
 router.delete("/delete", auth, async (req, res) => {
   try {
-    const deletedUser = await User.findByIdAndDelete(req.user);
+    const deletedUser = await Student.findByIdAndDelete(req.user);
     res.json(deletedUser);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -102,7 +130,7 @@ router.post("/tokenIsValid", async (req, res) => {
     const verified = jwt.verify(token, process.env.JWT_SECRET);
     if (!verified) return res.json(false);
 
-    const user = await User.findById(verified.id);
+    const user = await Student.findById(verified.id);
     if (!user) return res.json(false);
 
     return res.json(true);
