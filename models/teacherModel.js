@@ -8,4 +8,4 @@ const teacherSchema = new mongoose.Schema({
 });
 
 
-export default mongoose.model("teacher", teacherSchema);
+module.exports = mongoose.model("teacher", teacherSchema);
