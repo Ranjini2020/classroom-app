@@ -8,4 +8,4 @@ const studentSchema = new mongoose.Schema({
 });
 
 
-export default mongoose.model('student', studentSchema)
+module.exports = mongoose.model('student', studentSchema)
