@@ -3,10 +3,8 @@ import React, { useState } from "react";
 import Axios from "axios";
 
 
-function Login() {
-  // const [registrationType, setRegistrationType] = useState(false);
-  // const [registerUsername, setRegisterUsername] = useState("");
-  // const [registerPassword, setRegisterPassword] = useState("");
+
+function Login() {  
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [data, setData] = useState(null);
@@ -71,6 +69,7 @@ function Login() {
       <div className="form-group row">
         <div className="col-sm-10">
           <button type="submit" className="btn btn-primary" onClick={login}>Log In</button>
+          
         </div>
       </div>
        {/* <div className="form-group row">
