@@ -61,20 +61,26 @@ function User() {
                             HUGO Classroom
                         </Typography>
 
-                        <Button color="inherit"><Link to='/addtutorial' style={{ textDecoration: 'none', color: "#fff" }}>Add-Course</Link></Button>
-                        <Button color="inherit"><Link to='/' style={{ textDecoration: 'none', color: "#fff" }}>Home</Link></Button>
+                        <Button color="inherit">
+                            <Link to='/addtutorial' style={{ textDecoration: 'none', color: "#fff" }}>Add-Course
+                            </Link>
+                        </Button>
+                        <Button color="inherit">
+                            <Link to='/' style={{ textDecoration: 'none', color: "#fff" }}>Home
+                            </Link>
+                        </Button>
                     </Toolbar>
                 </AppBar>
                 <Switch>
-                    <Route exact path="/" component={TutorialsList}>
-                      
-                    </Route>
+                    {/* <Route exact path="/" component={TutorialsList}>
+
+                    </Route> */}
                     <Route exact path="/addtutorial" component={TutorialsAdd}>
                     </Route>
                     <Route exact path="/addtutorial/:_id" component={TutorialsAdd}>
 
                     </Route>
-                    
+
                     {/* <Route path='/admin' component={Admin}></Route> */}
                 </Switch>
 
