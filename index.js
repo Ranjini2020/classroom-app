@@ -60,14 +60,10 @@ mongoose.connect(
 // set up routes
 app.post("/login", passport.authenticate('local'), function(req, res){
   console.log(req.user);
-  if(req.user){
-    res.send("Successfully Authenticated");
+  res.send(req.user);
     //res.redirect("/courses");
     //If you want to redirect based off being a teacher or a student...
     //Let Kay know and he can come help you, because we'll need to adjust the PassportConfig.js
-  } else {
-    res.send("No User Exists");
-  }
 })
 
 app.post("/register", (req, res) => {
@@ -77,7 +73,7 @@ app.post("/register", (req, res) => {
   }
   db[tableName].findOne({ email: req.body.email }, async (err, doc) => {
     if (err) throw err;
-    if (doc) res.send("User Already Exists");
+    if (doc) res.send(false)
     if (!doc) {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
@@ -86,7 +82,7 @@ app.post("/register", (req, res) => {
         password: hashedPassword,
       });
       await newUser.save();
-      res.send("User Created");
+      res.send(true);
     }
   });
 });

@@ -1,92 +1,23 @@
-import React, { useState } from "react";
-import "./App.css";
-import Axios from "axios";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import index from "./pages/authentication";
+
 
 function App() {
-  const [registrationType, setRegistrationType] = useState(false);
-  const [registerUsername, setRegisterUsername] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-  const [loginUsername, setLoginUsername] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-  const [data, setData] = useState(null);
-  //const [message, setMessage] = useState(null);
-  const register = () => {
-    Axios({
-      method: "POST",
-      data: {
-        isTeacher: registrationType,
-        email: registerUsername,
-        password: registerPassword,
-      },
-      withCredentials: true,
-      url: "http://localhost:4000/register",
-    }).then((res) => console.log("registered",res ));
-    
-  };
-  const login = () => {
-    Axios({
-      method: "POST",
-      data: {
-        email: loginUsername,
-        password: loginPassword,
-      },
-      withCredentials: true,
-      url: "http://localhost:4000/login",
-    }).then((res) => alert(res.data));
-  };
- 
-  const getUser = () => {
-    Axios({
-      method: "GET",
-      withCredentials: true,
-      url: "http://localhost:4000/user",
-    }).then(({data}) => {
-      setData(data);
-    });
-  };
-
   return (
-    <div className="App">
+    <Router>
       <div>
-        <h1>Register</h1>
-        <input 
-          type="checkbox"
-          onClick={(e) => setRegistrationType(e.target.checked)}
-        /> Teacher?
-        <br/>
-        <input
-          placeholder="email"
-          onChange={(e) => setRegisterUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          onChange={(e) => setRegisterPassword(e.target.value)}
-        />
-        <button onClick={register}>Submit</button>
+        
+        <Switch>
+          <Route exact path="/" component={index} />
+          <Route exact path="/register" component={index} />
+          <Route exact path="/login" component={index} />
+          <Route exact path="/view" component={index} />
+         
+        </Switch>
       </div>
-
-      <div>
-        <h1>Login</h1>  
-        <input
-          placeholder="email"
-          onChange={(e) => setLoginUsername(e.target.value)}
-        />
-        <input
-        type="password"
-          placeholder="password"
-          onChange={(e) => setLoginPassword(e.target.value)}
-        />
-        <button onClick={login}>Submit</button> 
-      </div>
-
-       <div>
-        <h1>Get User</h1>
-        <button onClick={getUser}>Submit</button>
-         {data ? <h1>Welcome  {data.email}</h1> : null} 
-       </div>  
-    </div>
+    </Router>
   );
-       }
+}
 
 export default App;
