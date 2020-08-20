@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Axios from "axios";
+// import { Link } from "react-router-dom";
 
 function Register(){
     const [registrationType, setRegistrationType] = useState(false);
@@ -68,6 +69,7 @@ function Register(){
    <div className="form-group row">
      <div className="col-sm-10">
        <button type="submit" className="btn btn-primary mt-4"  onClick={register}>Sign in</button>
+       
     </div>
    </div>
  </form>
