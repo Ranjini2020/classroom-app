@@ -30,10 +30,11 @@ export default function ButtonAppBar() {
         <Toolbar>
          
           <Typography variant="h6" className={classes.title}>
-            Classroom
+            HUGO Classroom
           </Typography>
           <Link to="/login" className="button" ><h4>Login</h4></Link>
-          <Link to="/register" className="button"><h4>Sign UP</h4></Link>
+          <Link to="/register" className="button"><h4>Sign-up</h4></Link>
+          <Link to="/goTeacher" className="button"><h4>Teacher</h4></Link>
         </Toolbar>
       </AppBar>
     </div>
