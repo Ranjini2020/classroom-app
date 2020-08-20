@@ -1,18 +1,25 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import index from "./pages/authentication";
+import Header  from "./pages/Header";
+import About from "./pages/About"
+
+import Register from "./pages/Register";
+import View from "./pages/View";
+
+
 
 
 function App() {
   return (
     <Router>
       <div>
-        
+        <Header/>
         <Switch>
-          <Route exact path="/" component={index} />
-          <Route exact path="/register" component={index} />
+          <Route exact path="/" component={About}/>
+          <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={index} />
-          <Route exact path="/view" component={index} />
+          <Route exact path="/view" component={View} />
          
         </Switch>
       </div>

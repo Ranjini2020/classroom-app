@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Ranjini2020/classroom-app#readme",
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
