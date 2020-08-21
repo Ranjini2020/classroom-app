@@ -8,8 +8,8 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import SvgIcon from '@material-ui/core/SvgIcon';
 
-import TutorialsList from "../Ed-components/tutorial_list";
-import TutorialsAdd from '../Ed-components/tutorial_add';
+import TutorialsList from "../components/tutorial_list";
+import TutorialsAdd from '../components/tutorial_add';
 
 
 
