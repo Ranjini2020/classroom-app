@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import TutorialDataService from "../services/tutorial.service";
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -6,50 +6,51 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Card } from '@material-ui/core';
 
-// saveentry() {
-//     if (this.state.coursename == '') {
-//         alert('Invalid course name')
-//         return false
-//     }
-//     var data = {
-//         coursename: this.state.coursename,
-//         description: this.state.description,
-//         category: this.state.category,
-//         _id:this.state._id
-//     };
-//     TutorialDataService.create(data)
-//         .then(response => {
-//             this.setState({
-//                 id: '',
-//                 coursename: '',
-//                 description: '',
-//                 category: ''
-//             });
-//             console.log(response)
-//             alert('course added successfully')
-//             // console.log(response.data);
-//         })
-//         .catch(e => {
-//             console.log(e);
-//         });
+const Tutorial_add = (props) => {
+    const saveEntry = () => {
+        if (props.course.coursename.trim() === '') {
+            alert('Invalid course name');
+            return;
+        }
+        if(props.course.id){
+            console.log(props.course.id);
+        } else {
+            TutorialDataService.create({
+                coursename: props.course.coursename.trim(),
+                description: props.course.description.trim(),
+                category: props.course.category.trim(),
+                teacher: null
+            }).then(response => {
+                console.log(response);
+                clearEntry();
+                alert("Course Added Successfully");
+            }).catch(e => console.log(e));
+        }
+    }
 
+    const clearEntry = () => {
+        props.setCourseState({
+            id:'',
+            coursename:'',
+            description:'',
+            category:''
+        })
+    }
 
-// }
-
-const tutorial_add = (props) => {
     return (
         <Card style={{ padding: "10px", width: "50%" }}>
             <div className="col-md-12">
                 <h4>Course Entry</h4>
                 <form autoComplete="off">
-                    <TextField id="standard-basic" value={props.course.coursename} name="coursename" label="Course Name" />
+                    <TextField onChange={(e) => props.setCourseState({...props.course, coursename: e.target.value})} id="courseName" value={props.course.coursename} name="coursename" label="Course Name" />
                     <br></br>
-                    <TextField id="standard-basic" value={props.course.description} name="description" label="Description" />
+                    <TextField onChange={(e) => props.setCourseState({...props.course, description: e.target.value})} id="description" value={props.course.description} name="description" label="Description" />
                     <br></br>
-                    <TextField id="standard-basic" value={props.course.category} name="category" label="Category" />
+                    <TextField onChange={(e) => props.setCourseState({...props.course, category: e.target.value})} id="category" value={props.course.category} name="category" label="Category" />
                     <br></br>
                     <br></br>
-                    <Button variant="contained" color="primary">Save</Button>
+                    <Button onClick={saveEntry} variant="contained" color="primary">Save</Button>
+                    <Button onClick={clearEntry} variant="contained" color="primary">Clear</Button>
                 </form>
             </div>
         </Card>
@@ -57,4 +58,4 @@ const tutorial_add = (props) => {
 
 }
 
-export default tutorial_add;
+export default Tutorial_add;

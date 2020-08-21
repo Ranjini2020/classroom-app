@@ -11,14 +11,7 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import TutorialsList from "../components/tutorial_list";
 import TutorialsAdd from '../components/tutorial_add';
 
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
-
-import api from "../util/api"
+import api from "../util/api";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -47,13 +40,14 @@ function HomeIcon(props) {
 
 function User() {
     const [courseState, setCourseState] = useState({
-        id: null,
+        id: '',
         coursename: "",
         description: "",
         category: ""
     })
     const [pageState, setPageState] = useState(true);
-
+    const [userState, setUserState] = useState(api.getUser());
+    
     const setAdd = () =>{
         setPageState(false);
     }
@@ -67,28 +61,24 @@ function User() {
 
 
     return (
-        <Router>
-            <div className={classes.root}>
-                <AppBar position="static">
-                    <Toolbar>
-                        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                            <HomeIcon fontSize="large" />
-                        </IconButton>
-                        <Typography variant="h6" className={classes.title}>
-                            HUGO Classroom
-                        </Typography>
-
-                        <Button onClick={setAdd} color="inherit">Add-Course
-                            {/* <Link to='/addtutorial' style={{ textDecoration: 'none', color: "#fff" }}></Link> */}
-                        </Button>
-                        <Button onClick={setView} color="inherit">View
-                            {/* <Link to='/tutoriallist' style={{ textDecoration: 'none', color: "#fff" }}>View</Link> */}
-                        </Button>
-                    </Toolbar>
-                </AppBar>
-                {pageState ? (<TutorialsList setCourseState={setCourseState}/>) : (<TutorialsAdd setCourseState={setCourseState} course={courseState}/>)}
-            </div>
-        </Router>
+        <div className={classes.root}>
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <HomeIcon fontSize="large" />
+                    </IconButton>
+                    <Typography variant="h6" className={classes.title}>
+                        HUGO Classroom
+                    </Typography>
+                    <Button onClick={setAdd} color="inherit">Add-Course</Button>
+                    <Button onClick={setView} color="inherit">View</Button>
+                </Toolbar>
+            </AppBar>
+            {pageState ?
+            (<TutorialsList setPageState={setPageState} setCourseState={setCourseState}/>)
+                :
+            (<TutorialsAdd useData={userState} setCourseState={setCourseState} course={courseState}/>)}
+        </div>
     );
 }
 

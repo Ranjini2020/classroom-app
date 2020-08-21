@@ -8,9 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
 import Button from '@material-ui/core/Button';
-import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 
 export default class TutorialsList extends Component {
     constructor(props) {
@@ -19,6 +17,7 @@ export default class TutorialsList extends Component {
             tutorials: [],
         };
     }
+
     delete(_id) {
         let data = {
             _id: _id
@@ -32,10 +31,11 @@ export default class TutorialsList extends Component {
                 console.log(e);
             });
     }
-    componentDidMount() {
 
+    componentDidMount() {
         this.retrieveTutorials();
     }
+
     retrieveTutorials() {
         TutorialDataService.getAll()
             .then(response => {
@@ -47,6 +47,16 @@ export default class TutorialsList extends Component {
             .catch(e => {
                 console.log(e);
             });
+    }
+
+    editCourse(data) {
+        this.props.setCourseState({
+            id: data._id,
+            coursename: data.coursename,
+            description: data.description,
+            category: data.category
+        })
+        this.props.setPageState(false);
     }
 
     render() {
@@ -74,10 +84,10 @@ export default class TutorialsList extends Component {
                                         {row.description}
                                     </TableCell>
                                     <TableCell component="th" scope="row">
-                                        <Button variant="contained" color="primary"><Link style={{ textDecoration: 'none', color: "#fff" }} to={`/addtutorial/${row._id}`}  >Edit</Link></Button>
+                                        <Button variant="contained" color="primary" onClick={(e) => this.editCourse(row)}>Edit</Button>
                                     </TableCell>
                                     <TableCell component="th" scope="row">
-                                        <Button variant="contained" onClick={event => { this.delete(row._id) }} color="secondary">Delete</Button>
+                                        <Button variant="contained" onClick={e => { this.delete(row._id) }} color="secondary">Delete</Button>
                                     </TableCell>
                                 </TableRow>
                             ))}
