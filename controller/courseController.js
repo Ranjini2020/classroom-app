@@ -4,11 +4,7 @@ module.exports = {
     insertupdate(req, res) {
         if(!req.body._id)
         {
-            db.Course.create({
-                coursename: req.body.coursename,
-                description: req.body.description,
-                category:req.body.category
-            }).then((data) => {
+            db.Course.create(req.body).then((data) => {
                 return res.status(200).send({ message: 'record added', status: 'success' })
             }).catch((err) => { res.status(200).send({ message: err.message }) })
         }

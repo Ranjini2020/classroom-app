@@ -46,7 +46,6 @@ function User() {
         category: ""
     })
     const [pageState, setPageState] = useState(true);
-    const [userState, setUserState] = useState(api.getUser());
     
     const setAdd = () =>{
         setPageState(false);
@@ -77,7 +76,7 @@ function User() {
             {pageState ?
             (<TutorialsList setPageState={setPageState} setCourseState={setCourseState}/>)
                 :
-            (<TutorialsAdd useData={userState} setCourseState={setCourseState} course={courseState}/>)}
+            (<TutorialsAdd setCourseState={setCourseState} course={courseState}/>)}
         </div>
     );
 }
