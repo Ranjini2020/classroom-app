@@ -11,8 +11,8 @@ var Schema = new mongoose.Schema({
         type: String
     },
     isdeleted: {
-        type: Number,
-        default: 0
+        type: Boolean,
+        default: false
     },
     students: [
         {

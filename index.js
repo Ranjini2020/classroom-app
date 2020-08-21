@@ -92,7 +92,7 @@ app.get("/user", (req, res) => {
   if(req.user){
     res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
   } else {
-    res.send({email: "Not Found"});
+    res.send("");
   }
   
 });

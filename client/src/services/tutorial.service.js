@@ -4,8 +4,11 @@ class TutorialDataService {
   getAll() {
     return API.get("/tutorials");
   }
-  get(id) {
-    return API.get(`/tutorials/${id}`);
+  getCourseById(id) {
+    return API.get(`/tutorial/${id}`);
+  }
+  getCoursesByTeacherId(id){
+    return API.get(`/tutorials/teacher/${id}`)
   }
   create(data) {
     return API.post("/tutorials", data);

@@ -14,7 +14,12 @@ const Tutorial_add = (props) => {
             return;
         }
         if(props.course.id){
+            //Update the course with new information
             console.log(props.course.id);
+            TutorialDataService.update(props.course.id, {...props.course})
+                .then(response => {
+                    alert("Course Updated!");
+                }).catch(e => console.log(e));
         } else {
             var teacher = await api.getUser();
             TutorialDataService.create({

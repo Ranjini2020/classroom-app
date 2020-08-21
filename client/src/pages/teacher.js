@@ -11,8 +11,6 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import TutorialsList from "../components/tutorial_list";
 import TutorialsAdd from '../components/tutorial_add';
 
-import api from "../util/api";
-
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -56,8 +54,6 @@ function User() {
     }
 
     const classes = useStyles();
-
-
 
     return (
         <div className={classes.root}>
