@@ -14,7 +14,7 @@ const db = require("./models");
 
 
 // Setting up port and requiring models for syncing
-var PORT = process.env.PORT || 4000;
+var PORT = process.env.PORT || 8080;
 
 
 // Creating express app and configuring middleware needed for authentication
@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "http://localhost:3000", // <-- location of the react app were connecting to
+    origin: "http://localhost:8080", // <-- location of the react app were connecting to
     credentials: true,
   })
 );
@@ -39,9 +39,6 @@ app.use(cookieParser("secretcode"));
 app.use(passport.initialize());
 app.use(passport.session());
 require("./PassportConfig")(passport);
-
-
-var PORT = process.env.PORT || 4000
 
 // set up mongoose
 
@@ -65,8 +62,7 @@ require("./routes/studentView-route.js")(app);
 
 // set up routes for login and sign up
 app.post("/login", passport.authenticate('local'), function(req, res){
-  console.log(req.user);
-  res.send(req.user);
+  res.json(req.user);
     //res.redirect("/courses");
     //If you want to redirect based off being a teacher or a student...
     //Let Kay know and he can come help you, because we'll need to adjust the PassportConfig.js

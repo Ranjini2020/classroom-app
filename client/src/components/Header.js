@@ -34,7 +34,7 @@ export default function ButtonAppBar() {
           </Typography>
           <Link to="/login" className="button" ><h4>Login</h4></Link>
           <Link to="/register" className="button"><h4>Sign-up</h4></Link>
-          <Link to="/goTeacher" className="button"><h4>Teacher</h4></Link>
+          <Link to="/teacher" className="button"><h4>Teacher</h4></Link>
         </Toolbar>
       </AppBar>
     </div>
