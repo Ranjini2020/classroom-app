@@ -1,24 +1,24 @@
 const mongoose = require('mongoose');
 const db = require("../models")
 module.exports = {
-    insertupdate(req, res) {
-        if(!req.body._id)
-        {
-            db.Course.create(req.body).then((data) => {
-                return res.status(200).send({ message: 'record added', status: 'success' })
-            }).catch((err) => { res.status(200).send({ message: err.message }) })
-        }
-        else{
-            db.Course.findById(req.body._id)
-            .then((data) => {// data.update does not work
-                data.updateOne({
-                    coursename: req.body.coursename,
-                    description: req.body.description,
-                    category:req.body.category
-                }).then((dataupdate)=>{return res.status(200).send({message:'record Updated successfully'})})
+    create(req, res) {
+        db.Course.create(req.body)
+        .then((data) => {
+            console.log(data);
+            return db.Teacher.findOne({_id: req.body.teacher}).then(result=>{
+                result.classArray.push(data._id)
+                return db.Teacher.findByIdAndUpdate({_id: req.body.teacher}, result)
             })
-        }
-      
+        }).then(response => {
+            //find teacher by id and push course id to teacher's class array.
+            return res.status(200).send({ message: 'record added', status: 'success' })
+        }).catch((err) => { res.status(200).send({ message: err.message }) })
+    },
+
+    update(req, res){
+        db.Course.findByIdAndUpdate({_id:req.params.id}, req.body).then((data) => {
+            return res.status(200).send({ message: 'record updated', status: 'success' })
+        }).catch((err) => res.status(200).send({message: err.message}))
     },
     
     list(req, res) {
@@ -28,12 +28,21 @@ module.exports = {
             })
     },
 
+    listByTeacher(req, res){
+        db.Teacher.findById({_id: req.params.id})
+            .populate({path: "classArray", match: {isdeleted:false}})
+            .then((data) => {
+                console.log(data);
+                res.status(200).send(data);
+            }).catch(err => res.send(err));
+    },
+
     delete(req,res){
         console.log(req.body)
         db.Course.findById(req.body._id)
             .then((data) => {
                 data.updateOne({
-                    isdeleted:1
+                    isdeleted:true
                 }).then((dataupdate)=>{return res.status(200).send({message:'record deleted successfully'})})
             })
 

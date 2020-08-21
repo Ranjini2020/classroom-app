@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import api from '../util/api';
 
 export default class TutorialsList extends Component {
     constructor(props) {
@@ -36,13 +37,13 @@ export default class TutorialsList extends Component {
         this.retrieveTutorials();
     }
 
-    retrieveTutorials() {
-        TutorialDataService.getAll()
-            .then(response => {
+    async retrieveTutorials() {
+        var teacher = await api.getUser();
+        TutorialDataService.getCoursesByTeacherId(teacher._id)
+            .then(({data}) => {
                 this.setState({
-                    tutorials: response.data
+                    tutorials: data.classArray
                 });
-                console.log(response.data);
             })
             .catch(e => {
                 console.log(e);
