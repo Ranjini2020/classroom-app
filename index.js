@@ -46,7 +46,7 @@ var PORT = process.env.PORT || 4000
 // set up mongoose
 
 mongoose.connect(
-  process.env.MONGODB_CONNECTION_STRING || "mongodb://localhost/classroom1db",
+  process.env.MONGODB_CONNECTION_STRING || "mongodb://localhost/educator",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -60,7 +60,7 @@ mongoose.connect(
 
 
 // set uo routes for course
-
+app.use(require("./router"));
 require("./routes/studentView-route.js")(app);
 
 // set up routes for login and sign up
