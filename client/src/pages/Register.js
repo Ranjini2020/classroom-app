@@ -22,7 +22,7 @@ function Register(props) {
       withCredentials: true,
       url: "/register",
     }).then((res) => {
-      props.history.push("/teacher")
+      props.history.push("/login")
       // res.data ? window.location.replace("/login") : alert("User already registered")
     }).catch(err => console.log(err))
   };

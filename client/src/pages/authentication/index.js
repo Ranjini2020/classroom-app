@@ -32,9 +32,12 @@ function LoginPage(props) {
       },
       withCredentials: true,
       url: "/login",
-    }).then((res) => {
-      props.history.push("/teacher")
-      // res.data ? window.location.replace("/view") : alert("User not found")
+    }).then(({data}) => {
+      if(data.isTeacher){
+        props.history.push("/teacher");
+      } else {
+        props.history.push("/view");
+      }
     })
     .catch(res => alert("User email or password is incorrect"));
   };
