@@ -26,3 +26,12 @@
 
     
 // }
+
+
+
+// Student, Teacher - Create, (getUser), update>>teacher add course, student enroll course
+// Courses - Create, Update, View, "" Delete ""
+    // CUD - Teacher
+    // V - Teacher/Student
+        // get("/api/course/:id")
+        // .populate()

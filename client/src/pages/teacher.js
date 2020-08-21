@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -11,8 +11,6 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import TutorialsList from "../components/tutorial_list";
 import TutorialsAdd from '../components/tutorial_add';
 
-
-
 import {
     BrowserRouter as Router,
     Switch,
@@ -20,6 +18,7 @@ import {
     Link
 } from "react-router-dom";
 
+import api from "../util/api"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -37,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
         },
     },
 }));
+
 function HomeIcon(props) {
     return (
         <SvgIcon {...props}>
@@ -44,7 +44,24 @@ function HomeIcon(props) {
         </SvgIcon>
     );
 }
+
 function User() {
+    const [courseState, setCourseState] = useState({
+        id: null,
+        coursename: "",
+        description: "",
+        category: ""
+    })
+    const [pageState, setPageState] = useState(true);
+
+    const setAdd = () =>{
+        setPageState(false);
+    }
+
+    const setView = () =>{
+        setPageState(true);
+    }
+
     const classes = useStyles();
 
 
@@ -61,39 +78,18 @@ function User() {
                             HUGO Classroom
                         </Typography>
 
-                        <Button color="inherit">
-                            <Link to='/addtutorial' style={{ textDecoration: 'none', color: "#fff" }}>Add-Course
-                            </Link>
+                        <Button onClick={setAdd} color="inherit">Add-Course
+                            {/* <Link to='/addtutorial' style={{ textDecoration: 'none', color: "#fff" }}></Link> */}
                         </Button>
-                        <Button color="inherit">
-                            <Link to='/' style={{ textDecoration: 'none', color: "#fff" }}>Home
-                            </Link>
+                        <Button onClick={setView} color="inherit">View
+                            {/* <Link to='/tutoriallist' style={{ textDecoration: 'none', color: "#fff" }}>View</Link> */}
                         </Button>
                     </Toolbar>
                 </AppBar>
-                <Switch>
-                    {/* <Route exact path="/" component={TutorialsList}>
-
-                    </Route> */}
-                    <Route exact path="/addtutorial" component={TutorialsAdd}>
-                    </Route>
-                    <Route exact path="/addtutorial/:_id" component={TutorialsAdd}>
-
-                    </Route>
-
-                    {/* <Route path='/admin' component={Admin}></Route> */}
-                </Switch>
-
-
+                {pageState ? (<TutorialsList setCourseState={setCourseState}/>) : (<TutorialsAdd setCourseState={setCourseState} course={courseState}/>)}
             </div>
-
-
-
-
         </Router>
-    )
-        ;
-
+    );
 }
 
 export default User;

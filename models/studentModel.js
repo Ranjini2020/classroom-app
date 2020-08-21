@@ -6,7 +6,7 @@ const studentSchema = new mongoose.Schema({
   // displayName: { type: String },
   classArray:[
     {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
        ref: "MasterCourse"
     }
   ]

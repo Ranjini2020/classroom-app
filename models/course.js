@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-var ObjectId = require('mongodb').ObjectID;
 
 var Schema = new mongoose.Schema({
     coursename: {
@@ -17,14 +16,14 @@ var Schema = new mongoose.Schema({
     },
     students: [
         {
-          type: Schema.Types.ObjectId,
+          type: mongoose.Schema.Types.ObjectId,
           ref: "student"
         }
       ],
-      teacher: {
-        type: Schema.Types.ObjectId,
-        ref: "teacher"
-      }
+    teacher: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "teacher"
+    }
 
       
 
