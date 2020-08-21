@@ -5,9 +5,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Card } from '@material-ui/core';
+import api from "../util/api";
 
 const Tutorial_add = (props) => {
-    const saveEntry = () => {
+    const saveEntry = async () => {
         if (props.course.coursename.trim() === '') {
             alert('Invalid course name');
             return;
@@ -15,13 +16,13 @@ const Tutorial_add = (props) => {
         if(props.course.id){
             console.log(props.course.id);
         } else {
+            var teacher = await api.getUser();
             TutorialDataService.create({
                 coursename: props.course.coursename.trim(),
                 description: props.course.description.trim(),
                 category: props.course.category.trim(),
-                teacher: null
+                teacher: teacher._id
             }).then(response => {
-                console.log(response);
                 clearEntry();
                 alert("Course Added Successfully");
             }).catch(e => console.log(e));

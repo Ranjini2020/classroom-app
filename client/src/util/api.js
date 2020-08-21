@@ -1,12 +1,11 @@
 import axios from "axios";
 export default {
-    getUser: () => {
-        axios({
+    getUser: async () => {
+        return axios({
             method: "GET",
             withCredentials: true,
             url: "/user",
         }).then(({data}) => {
-            console.log(data);
             return data;
         });
     }
