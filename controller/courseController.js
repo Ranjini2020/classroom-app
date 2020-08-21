@@ -24,12 +24,14 @@ module.exports = {
         }
       
     },
+    
     list(req, res) {
-        db.Course.findAll({isdeleted:0})
+        db.Course.find({isdeleted:0})
             .then((data) => {
                 res.status(200).send(data)
             })
     },
+
     delete(req,res){
         console.log(req.body)
         db.Course.findById(req.body._id)

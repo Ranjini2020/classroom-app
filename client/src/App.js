@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import Teacher from "./pages/teacher";
 import View from "./pages/View";
 
+import api from "./util/api";
 
 
 
@@ -24,6 +25,11 @@ function App() {
           <Route exact path="/view" component={View} />
          
         </Switch>
+      </div>
+      <div>
+          <h1>Get User</h1>
+          <button onClick={api.getUser}>Submit</button>
+          <span id="test"></span>
       </div>
     </Router>
   );

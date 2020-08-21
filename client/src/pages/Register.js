@@ -26,27 +26,8 @@ function Register(props) {
       // res.data ? window.location.replace("/login") : alert("User already registered")
     }).catch(err => console.log(err))
   };
+
   return (
-    // <div className="Register">
-    //      <div>
-    //          <h1>Register</h1>
-    //         <input 
-    //       type="checkbox"
-    //       onClick={(e) => setRegistrationType(e.target.checked)}
-    //          /> Teacher?
-    //          <br/>
-    //          <input
-    //       placeholder="email"
-    //       onChange={(e) => setRegisterUsername(e.target.value)}
-    //         />
-    //         <input
-    //       type="password"
-    //       placeholder="password"
-    //       onChange={(e) => setRegisterPassword(e.target.value)}
-    //         />
-    //         <button onClick={register}>Submit</button>
-    //   </div>
-    //   </div>
     <div>
 
 
@@ -77,7 +58,7 @@ function Register(props) {
 
           <div className="form-group row">
             <div className="col-sm-10">
-              <button type="submit" className="btn btn-primary mt-4" onClick={register}>Sign in</button>
+              <button type="submit" className="btn btn-primary mt-4" onClick={register}>Sign Up</button>
 
             </div>
           </div>

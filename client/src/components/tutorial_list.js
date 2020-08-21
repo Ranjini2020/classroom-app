@@ -13,7 +13,6 @@ import Button from '@material-ui/core/Button';
 import { BrowserRouter as Router,Switch,Route,Link } from "react-router-dom";
 
 export default class TutorialsList extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
