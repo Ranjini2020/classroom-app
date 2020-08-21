@@ -10,27 +10,20 @@ import View from "./pages/View";
 
 import api from "./util/api";
 
-
-
 function App() {
   return (
     <Router>
       <div>
-        
+
         <Switch>
           <Route exact path="/" component={About}/>
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={index} />
           <Route exact path="/teacher" component={Teacher} />
-          <Route exact path="/view" component={View} />
-         
+          <Route exact path="/view" component={View} />   
         </Switch>
       </div>
-      <div>
-          <h1>Get User</h1>
-          <button onClick={api.getUser}>Submit</button>
-          <span id="test"></span>
-      </div>
+      <button onClick={api.getUser}>Log User</button>
     </Router>
   );
 }
