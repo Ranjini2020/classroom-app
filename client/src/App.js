@@ -6,11 +6,12 @@ import Register from "./pages/Register";
 import Teacher from "./pages/teacher";
 import View from "./pages/View";
 
+
 function App() {
   return (
     <Router>
       <div>
-
+       
         <Switch>
           <Route exact path="/" component={About}/>
           <Route exact path="/register" component={Register} />
