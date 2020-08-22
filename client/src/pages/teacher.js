@@ -10,6 +10,7 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 
 import TutorialsList from "../components/tutorial_list";
 import TutorialsAdd from '../components/tutorial_add';
+import { Link } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -55,11 +56,16 @@ function User() {
 
     const classes = useStyles();
 
+
+    
+
     return (
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                    
+                    <IconButton  edge="start" className={classes.menuButton} color="inherit" aria-label="menu" >
+                        
                         <HomeIcon fontSize="large" />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
@@ -67,6 +73,7 @@ function User() {
                     </Typography>
                     <Button onClick={setAdd} color="inherit">Add-Course</Button>
                     <Button onClick={setView} color="inherit">View</Button>
+                    <Button component={Link} to="/" color="inherit">Sign Out</Button>
                 </Toolbar>
             </AppBar>
             {pageState ?
