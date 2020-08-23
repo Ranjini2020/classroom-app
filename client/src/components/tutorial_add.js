@@ -5,6 +5,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Card } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import SubjectList from './subjectlist';
+
 import api from "../util/api";
 
 const Tutorial_add = (props) => {
@@ -57,6 +62,22 @@ const Tutorial_add = (props) => {
                     <br></br>
                     <Button onClick={saveEntry} variant="contained" color="primary">Save</Button>
                     <Button onClick={clearEntry} variant="contained" color="primary">Clear</Button>
+                    <br></br>
+                        <br></br>
+                        <hr></hr>
+                        <Grid container spacing={3}>
+                            <Grid item xs={6}>
+                            </Grid>
+                            <Grid item xs={6}>
+                            {props.course.id ?
+                                <Button variant="contained" color="primary">
+                                    <Link to={`/addsubject/${props.course.id}`} style={{ textDecoration: 'none', color: "#fff" }}>Lesson Entry</Link>
+                                </Button> :null}
+
+                            </Grid>
+                        </Grid>
+                        {props.course.id ? <SubjectList courseid={props.course.id}></SubjectList> : null}
+
                 </form>
             </div>
         </Card>

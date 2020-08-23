@@ -11,6 +11,8 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import api from '../util/api';
 
+import Grid from '@material-ui/core/Grid';
+
 export default class TutorialsList extends Component {
     constructor(props) {
         super(props);
@@ -90,6 +92,10 @@ export default class TutorialsList extends Component {
                                     <TableCell component="th" scope="row">
                                         <Button variant="contained" onClick={e => { this.delete(row._id) }} color="secondary">Delete</Button>
                                     </TableCell>
+
+                                    <TableCell component="th" scope="row">
+                                                <Button variant="contained" onClick={e => { this.delete(row._id) }} >ADD LESSONS</Button>
+                                            </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
