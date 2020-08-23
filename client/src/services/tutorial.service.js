@@ -32,6 +32,16 @@ class TutorialDataService {
   findByTitle(title) {
     return API.get(`/tutorials?title=${title}`);
   }
+  subjectcreate(data) {
+    return API.post("/subject", data);
+  }
+  subjectlist(_id) {
+    return API.get(`/subject/${_id}`);
+  }
+  subjectdelete(data) {
+    return API.put("/subjectdelete", data);
+  }
+
 }
 
 export default new TutorialDataService();

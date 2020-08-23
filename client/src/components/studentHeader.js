@@ -50,6 +50,7 @@ function HomeIcon(props) {
                     <Typography variant="h6" className={classes.title}>
                         HUGO Classroom
                     </Typography>
+                    <Button component={Link} to="/course-view" color="inherit">My Courses</Button>
                     <Button component={Link} to="/" color="inherit">Sign Out</Button>
                     
                 </Toolbar>
