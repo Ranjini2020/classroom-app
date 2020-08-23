@@ -32,6 +32,9 @@ class TutorialDataService {
   findByTitle(title) {
     return API.get(`/tutorials?title=${title}`);
   }
+  // findByID(id) {
+  //   return API.get(`/courseView/${id}`);
+  // }
 }
 
 export default new TutorialDataService();

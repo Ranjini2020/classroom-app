@@ -13,6 +13,7 @@ const db = require("./models");
 
 
 
+
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
 
@@ -58,7 +59,7 @@ mongoose.connect(
 
 // set uo routes for course
 app.use(require("./routes/course-routes"));
-require("./routes/studentView-route.js")(app);
+
 
 // set up routes for login and sign up
 app.post("/login", passport.authenticate('local'), function(req, res){
