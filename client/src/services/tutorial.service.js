@@ -42,6 +42,9 @@ class TutorialDataService {
     return API.put("/subjectdelete", data);
   }
 
+  // findByID(id) {
+  //   return API.get(`/courseView/${id}`);
+  // }
 }
 
 export default new TutorialDataService();
