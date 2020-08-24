@@ -1,6 +1,9 @@
 import API from "../API";
 
 class TutorialDataService {
+  getCourseWithSubject() {
+    return API.get("/coursewithsubject");
+  }
   getAll() {
     return API.get("/tutorials");
   }
@@ -31,6 +34,9 @@ class TutorialDataService {
   }
   findByTitle(title) {
     return API.get(`/tutorials?title=${title}`);
+  }
+  get(id) {
+    return API.get(`/tutorials/${id}`);
   }
   subjectcreate(data) {
     return API.post("/subject", data);

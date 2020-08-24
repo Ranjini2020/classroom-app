@@ -82,10 +82,6 @@ class Course extends Component {
         return (
             <div>
 
-
-
-
-
                 {
                     this.state.tutorials.length == 0 ?
 
