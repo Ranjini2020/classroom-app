@@ -1,21 +1,7 @@
-// // const router = require("express").Router();
-// const mongoose = require('mongoose');
-// const db = require("../models")
-// module.exports = {
-
-    
+const express = require('express');
+var router = express();
 
 
-// }
+const db = require('../controller');
 
-
-
-
-
-// // module.exports = {
-// //     findAll: function(req, res) {
-// //       db.Course.find(req.body)
-// //         .then(dbCourse => res.json(dbCourse))
-// //         .catch(err => res.status(422).json(err));
-// //     },
-// // }
+router.put('/api/subjectdelete', db.Subject.delete);

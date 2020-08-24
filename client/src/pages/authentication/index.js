@@ -21,7 +21,7 @@ function LoginPage(props) {
       if(data.isTeacher){
         props.history.push("/teacher");
       } else {
-        props.history.push("/view");
+        props.history.push("/coursevalidation");
       }
     })
     .catch(res => alert("User email or password is incorrect"));

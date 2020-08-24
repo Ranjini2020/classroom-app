@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 var ObjectId = require('mongodb').ObjectID;
 
 var Schema = new mongoose.Schema({
+    courseid:{
+        type:ObjectId
+    },
     subjectname: {
         type: String
     },
