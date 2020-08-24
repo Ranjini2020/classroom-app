@@ -16,13 +16,12 @@ function App() {
       <div>
        
         <Switch>
-          <Route exact path="/" component={About}/>
-          
+          <Route exact path="/" component={About}/>          
           <Route exact path="/addsubject/:courseid" component={SubjectAdd}></Route>
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={index} />
           <Route exact path="/teacher" component={Teacher} />
-          <Route exact path="/view" component={View} /> 
+          <Route exact path="/view/:_id" component={View} /> 
           <Route exact path="/coursevalidation" component={CourseValidation} /> 
           <Route path="/enrollment/:_id" component={Enrollment}></Route> 
         </Switch>
