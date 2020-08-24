@@ -100,9 +100,7 @@ export default class TutorialsList extends Component {
                                         <Button variant="contained" onClick={e => { this.delete(row._id) }} color="secondary">Delete</Button>
                                     </TableCell>
 
-                                    {/* <TableCell component="th" scope="row">
-                                                <Button variant="contained" onClick={e => { this.delete(row._id) }} >ADD LESSONS</Button>
-                                            </TableCell> */}
+                                    
                                     <TableCell component="th" scope="row">
                                             <Button variant="contained" color="primary"><Link style={{ textDecoration: 'none', color: "#fff" }} to={`/enrollment/${row._id}`}>Lessons Entry</Link></Button>
                                             </TableCell>

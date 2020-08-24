@@ -71,14 +71,7 @@ class View extends Component {
     return (
       <div >
         <Studentview />
-        {/* <h1>View</h1>
-        <p>
-          Nunc pharetra finibus est at efficitur. Praesent sed congue diam. Integer gravida dui
-          mauris, ut interdum nunc egestas sed. Aenean sed mollis diam. Nunc aliquet risus ac finibus
-          porta. Nam quis arcu non lectus tincidunt fermentum. Suspendisse aliquet orci porta quam
-          semper imperdiet. Praesent euismod mi justo, faucibus scelerisque risus cursus in. Sed
-          rhoncus mollis diam, sit amet facilisis lectus blandit at.
-      </p> */}
+        
         <br></br>
         <h4>Your Courses:</h4>
         {
@@ -125,17 +118,7 @@ class View extends Component {
                         <Typography gutterBottom variant="h6" component="h6">
                           Lessons:
                                                 </Typography>
-                        {/* {
-                          row.subjectdetails.length == 0 ? <Typography gutterBottom variant="h8" component="h4">
-                            No Lessons
-                                                 </Typography> :
-                            row.subjectdetails.map((subject, ele) => {
-                              let i = ele + 1;
-                              return <Typography gutterBottom variant="h8" component="h4">
-                                {i}. {subject.subjectname}
-                              </Typography>
-                            })
-                        } */}
+                        
                         <TreeView className={classes.root} defaultCollapseIcon={<ExpandMoreIcon />} defaultExpandIcon={<ChevronRightIcon />} multiSelect>
                           {
                             row.subjectdetails.length == 0 ? <Typography gutterBottom variant="h8" component="h4">
@@ -147,29 +130,16 @@ class View extends Component {
                                 return <TreeItem nodeId={i} label={subject.subjectname}>
                                   <TreeItem nodeId={j} label={subject.description} />
                                 </TreeItem>
-                                // <Typography gutterBottom variant="h8" component="h4">
-                                //   {i}. {subject.subjectname}
-                                // </Typography>
+                                
                               })
                           }
-                          {/* <TreeItem nodeId="5" label="Documents">
-                            <TreeItem nodeId="6" label="Material-UI">
-                              <TreeItem nodeId="7" label="src">
-                                <TreeItem nodeId="8" label="index.js" />
-                                <TreeItem nodeId="9" label="tree-view.js" />
-                              </TreeItem>
-                            </TreeItem>
-                          </TreeItem> */}
+                          
                         </TreeView>
-                        {/* <Typography variant="body2" color="textSecondary" component="p">
-                                                    {row.description}
-                                                </Typography> */}
+                        
                       </CardContent>
                     </CardActionArea>
                     <CardActions>
-                      {/* <Button style={{ "marginLeft": "70%" }} variant="contained" size="small" color="primary">
-                                                Enroll Now
-                                             </Button> */}
+                      
                     </CardActions>
                   </Card>
                 </Grid>

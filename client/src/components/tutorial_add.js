@@ -67,19 +67,7 @@ const Tutorial_add = (props) => {
                     <br></br>
                         <br></br>
                         <hr></hr>
-                        {/* <Grid container spacing={3}>
-                            <Grid item xs={6}>
-                            </Grid>
-                            <Grid item xs={6}>
-                            {props.course.id ?
-                                <Button variant="contained" color="primary">
-                                    <Link to={`/addsubject/${props.course.id}`} style={{ textDecoration: 'none', color: "#fff" }}>Lesson Entry</Link>
-                                </Button> :null}
-
-                            </Grid>
-                        </Grid>
-                        {props.course.id ? <SubjectList courseid={props.course.id}></SubjectList> : null} */}
-
+                        
                 </form>
             </div>
         </Card>
