@@ -1,5 +1,5 @@
 
 module.exports = {
-   Course: require("./courseController"),
-   Subject:require("./subjectController")
+   Course: require("./course"),
+   Subject:require("./subject")
 }

@@ -1,37 +1,16 @@
-// var db = require("../models");
-// var passport = require("../config/passport");
+const router = require('express').Router();
+const db = require('../controller');
 
-// module.exports = function(app) {
-//     // Using the passport.authenticate middleware with our local strategy.
-//     // If the user has valid login credentials, send them to the members page.
-//     // Otherwise the user will be sent an error
-//     app.post("/api/login", passport.authenticate("local"), function(req, res) {
-//       res.json(req.user);
-//     });
-//     // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
-//   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
-//   // otherwise send back an error
-//   app.post("/api/signup",({body} ,res) =>{
-//     db.Teacher.create(body)
-//     .then(dbUser => {
-//       res.json(dbUser);
-//     })
-//     .catch(err => {
-//       res.status(400).json(err);
-//     });
-// });
-     
-    
+router.post('/api/tutorials', db.Course.create);
+router.get('/api/tutorials', db.Course.list);
+router.put('/api/tutorialsdelete', db.Course.delete);
+router.get('/api/tutorials/:_id', db.Course.edit);
+router.put("/api/tutorials/:id", db.Course.update);
+router.get("/api/tutorials/teacher/:id", db.Course.listByTeacher);
+router.get('/api/coursewithsubject', db.Course.coursewithsubject);
+router.post('/api/courseidwithsubject',db.Course.courseidwithsubject)
+router.post('/api/subject', db.Subject.insertupdate);
+router.get('/api/subject/:_id', db.Subject.list);
+router.put('/api/subjectdelete', db.Subject.delete);
 
-
-    
-// }
-
-
-
-// Student, Teacher - Create, (getUser), update>>teacher add course, student enroll course
-// Courses - Create, Update, View, "" Delete ""
-    // CUD - Teacher
-    // V - Teacher/Student
-        // get("/api/course/:id")
-        // .populate()
+module.exports = router;

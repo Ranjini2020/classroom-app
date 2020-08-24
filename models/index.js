@@ -1,7 +1,7 @@
 module.exports={
-    Student:require("./studentModel"),
-    Teacher:require("./teacherModel"),
+    Student:require("./student"),
+    Teacher:require("./teacher"),
     Course:require("./course"),
-    MasterSubject:require("./subject")
+    Subject:require("./subject")
 }
 
