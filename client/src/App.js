@@ -5,8 +5,10 @@ import About from "./pages/About"
 import Register from "./pages/Register";
 import Teacher from "./pages/teacher";
 import View from "./pages/View";
+import CourseValidation from './pages/coursevalidation';
 import SubjectAdd from './components/subjectadd';
 import Enrollment from './components/enrollment';
+
 
 function App() {
   return (
@@ -20,7 +22,8 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={index} />
           <Route exact path="/teacher" component={Teacher} />
-          <Route exact path="/view" component={View} />   
+          <Route exact path="/view" component={View} /> 
+          <Route exact path="/coursevalidation" component={CourseValidation} /> 
           <Route path="/enrollment/:_id" component={Enrollment}></Route> 
         </Switch>
       </div>

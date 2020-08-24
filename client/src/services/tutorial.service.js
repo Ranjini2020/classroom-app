@@ -38,6 +38,9 @@ class TutorialDataService {
   get(id) {
     return API.get(`/tutorials/${id}`);
   }
+  courseidwithsubject(data){
+    return API.post('/courseidwithsubject',data)
+  }
   subjectcreate(data) {
     return API.post("/subject", data);
   }
