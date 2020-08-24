@@ -55,6 +55,34 @@ module.exports = {
         })
     },
 
+    coursewithsubject(req,res){
+        db.Course.aggregate([
+            {
+                $match: {  isdeleted: 0 }
+            },
+            {
+                "$lookup": {
+                    "from": "mastersubjects",
+                    "localField": "_id",
+                    "foreignField": "courseid",
+                    "as": "subjectdetails"
+                }
+            },
+            {
+                $project:{
+                    coursename:1,
+                    subjectdetails:1
+
+                }
+            }
+        ]
+           
+        )
+        .then((data) => {
+            res.status(200).send(data)
+        })
+    }
+}
     // course view route created by me
     // findById(req,res){
     //     db.Course.findById({_id:req.body.courseID}).then((data)=>{
@@ -76,4 +104,3 @@ module.exports = {
     // },
     
     
-}

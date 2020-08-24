@@ -10,8 +10,11 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import api from '../util/api';
+import { Card } from '@material-ui/core';
 
 import Grid from '@material-ui/core/Grid';
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default class TutorialsList extends Component {
     constructor(props) {
@@ -64,7 +67,9 @@ export default class TutorialsList extends Component {
 
     render() {
         return (
-            <div className="col-md-6">
+            <div>
+                <br></br>
+                <Card style={{ padding: "10px",width:"50%",marginLeft:"20%"}}>
                 <h4>Course List</h4>
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">
@@ -75,6 +80,8 @@ export default class TutorialsList extends Component {
                                 <TableCell>Edit</TableCell>
                                 
                                 <TableCell>Delete</TableCell>
+                                <TableCell>Add Lessons</TableCell>
+
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -93,14 +100,19 @@ export default class TutorialsList extends Component {
                                         <Button variant="contained" onClick={e => { this.delete(row._id) }} color="secondary">Delete</Button>
                                     </TableCell>
 
-                                    <TableCell component="th" scope="row">
+                                    {/* <TableCell component="th" scope="row">
                                                 <Button variant="contained" onClick={e => { this.delete(row._id) }} >ADD LESSONS</Button>
+                                            </TableCell> */}
+                                    <TableCell component="th" scope="row">
+                                            <Button variant="contained" color="primary"><Link style={{ textDecoration: 'none', color: "#fff" }} to={`/enrollment/${row._id}`}>Lessons Entry</Link></Button>
                                             </TableCell>
+
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
+                </Card>
 
 
             </div>

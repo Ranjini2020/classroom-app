@@ -13,6 +13,11 @@ router.get('/api/tutorials/:_id', db.Course.edit);
 router.put("/api/tutorials/:id", db.Course.update);
 router.get("/api/tutorials/teacher/:id", db.Course.listByTeacher);
 
+router.get('/api/coursewithsubject', db.Course.coursewithsubject);
+router.post('/api/subject', db.Subject.insertupdate);
+router.get('/api/subject/:_id', db.Subject.list);
+router.put('/api/subjectdelete', db.Subject.delete);
+
 // create courseview route by me
 // router.get("/api/courseView/:_id",db.View.findById);
 

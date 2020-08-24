@@ -49,7 +49,7 @@ const Tutorial_add = (props) => {
     }
 
     return (
-        <Card style={{ padding: "10px", width: "50%" }}>
+        <Card style={{ padding: "10px", width: "50%", marginleft: "20%" }}>
             <div className="col-md-12">
                 <h4>Course Entry</h4>
                 <form autoComplete="off">
@@ -60,12 +60,13 @@ const Tutorial_add = (props) => {
                     <TextField onChange={(e) => props.setCourseState({...props.course, category: e.target.value})} id="category" value={props.course.category} name="category" label="Category" />
                     <br></br>
                     <br></br>
-                    <Button onClick={saveEntry} variant="contained" color="primary">Save</Button>
+                    <Button onClick={saveEntry} variant="contained" color="primary">Save</Button>&nbsp;&nbsp;&nbsp;
+                    &nbsp;
                     <Button onClick={clearEntry} variant="contained" color="primary">Clear</Button>
                     <br></br>
                         <br></br>
                         <hr></hr>
-                        <Grid container spacing={3}>
+                        {/* <Grid container spacing={3}>
                             <Grid item xs={6}>
                             </Grid>
                             <Grid item xs={6}>
@@ -76,7 +77,7 @@ const Tutorial_add = (props) => {
 
                             </Grid>
                         </Grid>
-                        {props.course.id ? <SubjectList courseid={props.course.id}></SubjectList> : null}
+                        {props.course.id ? <SubjectList courseid={props.course.id}></SubjectList> : null} */}
 
                 </form>
             </div>
