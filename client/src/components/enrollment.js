@@ -165,12 +165,7 @@ class Enrollment extends Component {
                                 </Grid>
                                 <Grid item xs={6}>
                                 </Grid>
-                                {/* <Grid item xs={3}>
-                                    {this.props.match.params._id ? <Button variant="contained" onClick={this.delete} color="secondary">
-                                        Delete
-                                     </Button> : null}
-
-                                </Grid> */}
+                                
                             </Grid>
 
 
@@ -189,9 +184,6 @@ class Enrollment extends Component {
                                 <TextField id="standard-basic" onChange={this.handleChange} value={this.state.category} name="category" label="Category" /><br></br>
                                 <br></br>
 
-                                {/* <Button variant="contained" onClick={this.saveentry} color="primary">
-                                    Save
-                                </Button>  */}
                                 &nbsp; <Button variant="contained" color="secondary">
                                     <Link to="/teacher" style={{ textDecoration: 'none', color: "#fff" }}>Back To List</Link>
                                 </Button>

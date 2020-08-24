@@ -22,25 +22,12 @@ function About() {
         <Row>
           <Col size="md-12">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet diam tortor, id
-              consequat mauris ullamcorper eu. Orci varius natoque penatibus et magnis dis
-              parturient montes, nascetur ridiculus mus. Pellentesque et dui id justo finibus
-              sollicitudin at et metus. Ut feugiat tellus nec metus commodo, sed suscipit nisi
-              gravida. Duis eget vestibulum quam, ut porttitor sem. Donec sagittis mi sollicitudin
-              turpis semper, et interdum risus lobortis. Vestibulum suscipit nunc non egestas
-              tristique. Proin hendrerit efficitur malesuada. Mauris lorem urna, sodales accumsan
-              quam non, tristique tempor erat. Nullam non sem facilisis, tempus tortor sit amet,
-              volutpat nisl. Ut et turpis non nunc maximus mollis a vitae tortor. Pellentesque
-              mattis risus ac quam laoreet cursus. Praesent suscipit orci neque, vestibulum
-              tincidunt augue tincidunt non. Duis consequat mattis tortor vitae mattis.
+              HUGO Classroom is a free, blended learning platform that offers a variety of benefits for both students and teachers. Whether you're a 1:1 class or you just rock the computer carts from time to time, HUGO Classroom can elevate your classroom's productivity and take workflow management to the next level.
+              
             </p>
             <p>
-              Phasellus at rutrum nisl. Praesent sed massa ut ipsum bibendum porttitor. Sed
-              malesuada molestie velit ac viverra. Quisque a ullamcorper purus. Curabitur luctus mi
-              ac mi hendrerit semper. Nulla tincidunt accumsan lobortis. Mauris convallis sapien non
-              nibh porta accumsan. Nunc volutpat tempus porttitor. Nunc congue dictum egestas.
-              Aliquam blandit mi eu urna scelerisque, vitae volutpat ligula ultricies. Maecenas vel
-              porta augue. Fusce mauris ex, dignissim et lacinia ut, tempus eget nibh.
+              Since HUGO app is cloud-based - meaning they live on the internet than on hard drive and is accessible from any device. Students can work seamlessly wherever they are, without worrying about clunky flash drives, emailing files back and forth, or losing progress due to computer malfunction.
+
             </p>
             
           </Col>
