@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: "http://localhost:8080", // <-- location of the react app were connecting to
+    origin: "http://localhost:"+ process.env.PORT, // <-- location of the react app were connecting to
     credentials: true,
   })
 );
@@ -100,8 +100,15 @@ app.get("/user", (req, res) => {
 //----------------------------------------- END OF ROUTES------------------------------------------------
 //----------------------------------------- END OF ROUTES---------------------------------------------------
 //Start Server
-
- 
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+ // Send every other request to the React app
+// Define any API routes before this runs
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 app.listen(PORT, () => console.log(`The server has started on port: ${PORT}`));
 
