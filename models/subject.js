@@ -16,5 +16,5 @@ var Schema = new mongoose.Schema({
         default: 0
     }
 })
-const MasterSubject = new mongoose.model('MasterSubject', Schema)
-module.exports = MasterSubject;
+
+module.exports = mongoose.model('MasterSubject', Schema);

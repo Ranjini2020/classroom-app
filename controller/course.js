@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
-const db = require("../models")
+const db = require("../models");
+
 module.exports = {
+
     create(req, res) {
         db.Course.create(req.body)
         .then((data) => {
@@ -47,6 +49,7 @@ module.exports = {
             })
 
     },
+
     edit(req,res){
         db.Course.findById(req.params._id)
         .then((data) => {
@@ -82,6 +85,7 @@ module.exports = {
             res.status(200).send(data)
         })
     },
+
     courseidwithsubject(req,res){
         db.Course.aggregate([
             {
@@ -111,5 +115,4 @@ module.exports = {
     }
 
 }
-    
-    
+ 
