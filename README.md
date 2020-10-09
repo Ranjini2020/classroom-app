@@ -20,3 +20,7 @@ Students can access courses based on course-code shared by teacher and  able to 
 
 # Link for App
 https://hugo-classapp.herokuapp.com/
+
+# Screenshot
+![image](https://user-images.githubusercontent.com/65205190/95580402-e565e180-09fc-11eb-9656-78891ac82d4a.png)
+
